@@ -1,0 +1,578 @@
+<!--
+  Assignment: week-5-lab
+  Author: Arefa Nila
+  Date: 04-10-2022
+  Purpose: Programming Training Time Tracker application.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Tracker</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <div data-role="page" id="page-menu">
+      <!--
+          This will create a main heading bar at the top of the app
+          This may be left out if it isn't needed for your app
+        -->
+      <div data-role="header">
+        <h1>Time Tracker</h1>
+      </div>
+
+      <div data-role="tabs" id="tabs">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#one" class="ui-btn-active">Home</a></li>
+            <li><a href="#two">Login</a></li>
+          </ul>
+        </div>
+        <div class="Home_container text-center">
+          <div id="one" class="ui-content">
+            <h1>"Time is more valuable than money. You can get money, but you cannot get more time"</h1>
+            <h3>Jim Rohn</h3>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
+          <div id="two">
+            <!-- key pad -->
+            <div data-role="main" class="ui-content">
+              <div class="wrape">
+                <label>Password:</label>
+                <input type="password" data-clear-btn="false" name="password-login" id="password-login" value="" autocomplete="off" />
+
+                <div data-role="controlgroup" data-type="horizontal">
+                  <a onclick="loginHandle()" class="ui-btn ui-input-btn ui-corner-all ui-shadow ui-btn-inline">Enter</a>
+                  <a href="#page-about" class="ui-btn ui-input-btn ui-corner-all ui-shadow ui-btn-inline">About</a>
+                </div>
+
+                <div data-role="controlgroup" data-theme="b" data-type="horizontal">
+                  <a href="#" class="ui-btn ui-corner-all zero" onclick="addValueToPassword(0)">0</a>
+                  <a href="#" class="ui-btn ui-corner-all one" onclick="addValueToPassword(1)">1</a>
+                  <a href="#" class="ui-btn ui-corner-all two" onclick="addValueToPassword(2)">2</a>
+                  <a href="#" class="ui-btn ui-corner-all three" onclick="addValueToPassword(3)">3</a>
+                  <a href="#" class="ui-btn ui-corner-all four" onclick="addValueToPassword(4)">4</a>
+                  <a href="#" class="ui-btn ui-corner-all five" onclick="addValueToPassword(5)">5</a>
+                </div>
+                <div data-role="controlgroup" data-theme="b" data-type="horizontal">
+                  <a href="#" class="ui-btn ui-corner-all six" onclick="addValueToPassword(6)">6</a>
+                  <a href="#" class="ui-btn ui-corner-all seven" onclick="addValueToPassword(7)">7</a>
+                  <a href="#" class="ui-btn ui-corner-all eight" onclick="addValueToPassword(8)">8</a>
+                  <a href="#" class="ui-btn ui-corner-all nine" onclick="addValueToPassword(9)">9</a>
+                  <a href="#" class="ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-left bksp" onclick="addValueToPassword('bksp')">BKSP</a>
+                </div>
+                <!-- <div data-role="controlgroup" data-theme="b" data-type="horizontal"></div> -->
+                <div data-role="controlgroup" data-theme="b" data-type="horizontal"></div>
+              </div>
+            </div>
+            <!-- End of key pad -->
+          </div>
+        </div>
+      </div>
+
+      <!--
+          This will create a bar at the bottom of the app after the content
+          This may be left out if it isn't need for your app
+        -->
+      <div data-role="footer" class="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          All rights reserved | Programming Training Time Tracker
+        </p>
+      </div>
+    </div>
+
+    <!-- About page -->
+    <div data-role="page" id="page-about">
+      <div data-role="header">
+        <a class="ui-link ui-btn-left ui-btn ui-icon-bars ui-btn-icon-left ui-btn-inline ui-shadow ui-corner-all" href="#page-menu">Menu</a>
+        <h1>Time Tracker</h1>
+      </div>
+      <div data-role="navbar">
+        <ul>
+          <li>
+            <a href="#page-menu" class="ui-btn">Home</a>
+          </li>
+          <li>
+            <a href="#page-about" class="ui-btn-active ui-state-persist">About</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <div data-role="main" class="ui-content">
+          <div class="wrape">
+            <div>
+              <div>
+                <h1>Programming Training Time Tracker.</h1>
+                <ul>
+                  <li>Collect user's goal number of hours to spend training on programming per day as part of their profile.</li>
+                  <li>Collect user's number of hours spent training for programming as part of the add record page.</li>
+                  <li>Record page will show date and hours spent training.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-role="footer" class="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          All rights reserved | Programming Training Time Tracker
+        </p>
+      </div>
+    </div>
+
+    <!-- Advice/Suggestions page -->
+    <div data-role="page" id="page-advice">
+      <div data-role="header">
+        <a class="ui-link ui-btn-left ui-btn ui-icon-bars ui-btn-icon-left ui-btn-inline ui-shadow ui-corner-all" href="#page-menu">Menu</a>
+        <h1>Time Tracker</h1>
+      </div>
+      <div data-role="navbar">
+        <ul>
+          <li>
+            <a href="#page-menu" class="ui-btn">Home</a>
+          </li>
+          <li>
+            <a href="#page-about" class="ui-btn-active ui-state-persist">We value your Advice</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <div data-role="main" class="ui-content">
+          <div class="wrape">
+            <p>Advice page under development</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-role="footer" class="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          All rights reserved | Programming Training Time Tracker
+        </p>
+      </div>
+    </div>
+
+    <!-- Disclaimer Page -->
+    <div data-role="page" id="page-disclaimer">
+      <div data-role="header">
+        <h1>Disclaimer</h1>
+        <a href="index.html" class="ui-btn ui-input-btn ui-corner-all ui-shadow ui-btn-inline">Home</a>
+      </div>
+
+      <div class="container">
+        <div data-role="main" class="ui-content">
+          <div class="wrape">
+            <!--           Disclaimer          -->
+            <p>Last updated: April 11, 2022</p>
+            <h1>Interpretation and Definitions</h1>
+            <h2>Interpretation</h2>
+            <p>
+              The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have
+              the same meaning regardless of whether they appear in singular or in plural.
+            </p>
+            <h2>Definitions</h2>
+            <p>For the purposes of this Disclaimer:</p>
+            <ul>
+              <li>
+                <p>
+                  <strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Disclaimer)
+                  refers to Programming Training Time Tracker.
+                </p>
+              </li>
+              <li>
+                <p><strong>Service</strong> refers to the Application.</p>
+              </li>
+              <li>
+                <p>
+                  <strong>You</strong> means the individual accessing the Service, or the company, or other legal entity on behalf of which such individual is
+                  accessing or using the Service, as applicable.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <strong>Application</strong> means the software program provided by the Company downloaded by You on any electronic device named Programming
+                  Training Time Tracker.
+                </p>
+              </li>
+            </ul>
+            <h1>Disclaimer</h1>
+            <p>The information contained on the Service is for general information purposes only.</p>
+            <p>The Company assumes no responsibility for errors or omissions in the contents of the Service.</p>
+            <p>
+              In no event shall the Company be liable for any special, direct, indirect, consequential, or incidental damages or any damages whatsoever, whether
+              in an action of contract, negligence or other tort, arising out of or in connection with the use of the Service or the contents of the Service.
+              The Company reserves the right to make additions, deletions, or modifications to the contents on the Service at any time without prior notice.
+            </p>
+            <p>The Company does not warrant that the Service is free of viruses or other harmful components.</p>
+            <h1>External Links Disclaimer</h1>
+            <p>The Service may contain links to external websites that are not provided or maintained by or in any way affiliated with the Company.</p>
+            <p>
+              Please note that the Company does not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external
+              websites.
+            </p>
+            <h1>Errors and Omissions Disclaimer</h1>
+            <p>
+              The information given by the Service is for general guidance on matters of interest only. Even if the Company takes every precaution to insure
+              that the content of the Service is both current and accurate, errors can occur. Plus, given the changing nature of laws, rules and regulations,
+              there may be delays, omissions or inaccuracies in the information contained on the Service.
+            </p>
+            <p>The Company is not responsible for any errors or omissions, or for the results obtained from the use of this information.</p>
+            <h1>Fair Use Disclaimer</h1>
+            <p>
+              The Company may use copyrighted material which has not always been specifically authorized by the copyright owner. The Company is making such
+              material available for criticism, comment, news reporting, teaching, scholarship, or research.
+            </p>
+            <p>
+              The Company believes this constitutes a &quot;fair use&quot; of any such copyrighted material as provided for in section 107 of the United States
+              Copyright law.
+            </p>
+            <p>
+              If You wish to use copyrighted material from the Service for your own purposes that go beyond fair use, You must obtain permission from the
+              copyright owner.
+            </p>
+            <h1>Views Expressed Disclaimer</h1>
+            <p>
+              The Service may contain views and opinions which are those of the authors and do not necessarily reflect the official policy or position of any
+              other author, agency, organization, employer or company, including the Company.
+            </p>
+            <p>
+              Comments published by users are their sole responsibility and the users will take full responsibility, liability and blame for any libel or
+              litigation that results from something written in or as a direct result of something written in a comment. The Company is not liable for any
+              comment published by users and reserves the right to delete any comment for any reason whatsoever.
+            </p>
+            <h1>No Responsibility Disclaimer</h1>
+            <p>
+              The information on the Service is provided with the understanding that the Company is not herein engaged in rendering legal, accounting, tax, or
+              other professional advice and services. As such, it should not be used as a substitute for consultation with professional accounting, tax, legal
+              or other competent advisers.
+            </p>
+            <p>
+              In no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever arising out of
+              or in connection with your access or use or inability to access or use the Service.
+            </p>
+            <h1>&quot;Use at Your Own Risk&quot; Disclaimer</h1>
+            <p>
+              All information in the Service is provided &quot;as is&quot;, with no guarantee of completeness, accuracy, timeliness or of the results obtained
+              from the use of this information, and without warranty of any kind, express or implied, including, but not limited to warranties of performance,
+              merchantability and fitness for a particular purpose.
+            </p>
+            <p>
+              The Company will not be liable to You or anyone else for any decision made or action taken in reliance on the information given by the Service or
+              for any consequential, special or similar damages, even if advised of the possibility of such damages.
+            </p>
+            <h1>Contact Us</h1>
+            <p>If you have any questions about this Disclaimer, You can contact Us:</p>
+            <ul>
+              <li>By email: anila001@my.wilmu.edu</li>
+            </ul>
+            <!--           End of Disclaimer          -->
+            <a onclick="agreedToLegal()" class="ui-btn ui-input-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-forward">Confirm</a>
+          </div>
+        </div>
+      </div>
+
+      <div data-role="footer" class="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          All rights reserved | Programming Training Time Tracker
+        </p>
+      </div>
+    </div>
+
+    <!-- Graph page -->
+    <div data-role="page" id="page-graph">
+      <div data-role="header">
+        <a class="ui-link ui-btn-left ui-btn ui-icon-bars ui-btn-icon-left ui-btn-inline ui-shadow ui-corner-all" href="#page-menu">Menu</a>
+        <h1>Time Tracker</h1>
+      </div>
+      <div data-role="navbar">
+        <ul>
+          <li>
+            <a href="#page-menu" class="ui-btn">Home</a>
+          </li>
+          <li>
+            <a href="#page-graph" class="ui-btn-active ui-state-persist">Graph Page</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <div data-role="main" class="ui-content">
+          <div class="wrape">
+            <p>Graph under development</p>
+          </div>
+        </div>
+      </div>
+
+      <div data-role="footer" class="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          All rights reserved | Programming Training Time Tracker
+        </p>
+      </div>
+    </div>
+
+    <!-- Menu Page -->
+    <div data-role="page" id="page-menu">
+      <div data-role="header">
+        <h1>Time Tracker</h1>
+      </div>
+
+      <div data-role="tabs" id="tabs">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#menu-one" class="ui-btn-active ui-state-persist">Home</a></li>
+            <li><a href="#menu-two">Menu</a></li>
+          </ul>
+        </div>
+        <div class="Home_container text-center">
+          <div id="menu-one" class="ui-content">
+            <h1>"Time is more valuable than money. You can get money, but you cannot get more time"</h1>
+            <h3>Jim Rohn</h3>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+          </div>
+          <div id="menu-two">
+            <ul data-role="listview" data-inset="true">
+              <li><a href="#page-user-info">User Info</a></li>
+              <li><a href="#page-records">Records</a></li>
+              <li><a href="#page-about">About</a></li>
+              <li><a href="#page-graph">Graph</a></li>
+              <li><a href="#page-advice">Suggestions</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!--
+          This will create a bar at the bottom of the app after the content
+          This may be left out if it isn't need for your app
+        -->
+      <div data-role="footer" class="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          All rights reserved | Programming Training Time Tracker
+        </p>
+      </div>
+    </div>
+
+    <!-- Record form Page -->
+    <div data-role="page" id="page-record-form">
+      <div data-role="header">
+        <a class="ui-link ui-btn-left ui-btn ui-icon-bars ui-btn-icon-left ui-btn-inline ui-shadow ui-corner-all" href="#page-menu">Menu</a>
+        <h1>Time Tracker</h1>
+      </div>
+      <div data-role="navbar">
+        <ul>
+          <li>
+            <a href="#page-menu" class="ui-btn">Home</a>
+          </li>
+          <li>
+            <a href="#page-user-info" class="ui-btn-active ui-state-persist">Add Record</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <div data-role="main" class="ui-content">
+          <div class="wrape">
+            <form id="form-record-form" name="form-record-form">
+              <div class="ui-field-contain">
+                <label>Date:</label>
+                <input type="date" name="date" id="date" value="" />
+              </div>
+              <div class="ui-field-contain">
+                <label>Time:</label>
+                <input type="time" name="time" id="time" value="" />
+              </div>
+              <div class="ui-field-contain">
+                <label for="slider-3">Time Spend:</label>
+                <input type="range" name="slider" id="slider-3" data-highlight="true" min="0" max="100" value="50" />
+              </div>
+              <button
+                value=""
+                type="submit"
+                data-index-to-edit=""
+                id="record-submit"
+                class="ui-btn ui-input-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left"
+              >
+                Add Record
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div data-role="footer" class="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          All rights reserved | Programming Training Time Tracker
+        </p>
+      </div>
+    </div>
+
+    <!-- Records Page -->
+    <div data-role="page" id="page-records">
+      <div data-role="header">
+        <a class="ui-link ui-btn-left ui-btn ui-icon-bars ui-btn-icon-left ui-btn-inline ui-shadow ui-corner-all" href="#page-menu">Menu</a>
+        <h1>Time Tracker</h1>
+      </div>
+      <div data-role="navbar">
+        <ul>
+          <li>
+            <a href="#page-menu" class="ui-btn">Home</a>
+          </li>
+          <li>
+            <a href="#page-records" class="ui-btn-active ui-state-persist">Records</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <div data-role="main" class="ui-content">
+          <div class="wrape">
+            <h2>Records</h2>
+            <div id="user-info-div" class="ui-field-contain"></div>
+
+            <table data-role="table" id="movie-table" data-filter="true" data-input="#filterTable-input" class="ui-responsive">
+              <thead id="records-table-heading">
+                <tr>
+                  <th data-priority="1">Sr.No</th>
+                  <th data-priority="persist">Date</th>
+                  <th data-priority="2">Time</th>
+                  <th data-priority="4">Slider</th>
+                  <th data-priority="5">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="records-table" class="text-center"></tbody>
+            </table>
+            <div class="ui-field-contain">
+              <a href="#page-record-form" onclick="addNew()" class="ui-btn ui-icon-plus ui-btn-icon-left">Add New Record</a>
+              <a onclick="clearRecords()" id="records-clear" class="ui-btn ui-icon-delete ui-btn-icon-left">Clear Records</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-role="footer" class="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          All rights reserved | Programming Training Time Tracker
+        </p>
+      </div>
+    </div>
+
+    <!-- User info Page -->
+    <div data-role="page" id="page-user-info">
+      <div data-role="header">
+        <a class="ui-link ui-btn-left ui-btn ui-icon-bars ui-btn-icon-left ui-btn-inline ui-shadow ui-corner-all" href="#page-menu">Menu</a>
+        <h1>Time Tracker</h1>
+      </div>
+      <div data-role="navbar">
+        <ul>
+          <li>
+            <a href="#page-menu" class="ui-btn">Home</a>
+          </li>
+          <li>
+            <a href="#page-user-info" class="ui-btn-active ui-state-persist">User Info</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <div data-role="main" class="ui-content">
+          <div class="wrape">
+            <form id="form-user-info" name="form-user-info">
+              <div class="ui-field-contain">
+                <label for="first-name">First Name:</label>
+                <input required type="text" name="firstName" id="first-name" placeholder="First Name" value="" />
+              </div>
+              <div class="ui-field-contain">
+                <label for="last-name">Last Name:</label>
+                <input required type="text" name="lastName" id="last-name" placeholder="Last Name" value="" />
+              </div>
+              <div class="ui-field-contain">
+                <label>Edit Password:</label>
+                <input required name="passcode" type="password" placeholder="New Password" data-clear-btn="false" id="password-1" value="" autocomplete="off" />
+              </div>
+              <div class="ui-field-contain">
+                <label for="goals">Goals:</label>
+                <input required type="text" name="goals" id="goals" placeholder="Enter your goals if any :)" value="" />
+              </div>
+              <div id="user-submit" onclick="saveUserForm()" class="ui-btn ui-input-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left">
+                Update
+                <!-- <input type="submit" data-enhanced="true" /> -->
+              </div>
+              <div id="user-submit" onclick="showUserForm()" class="ui-btn ui-input-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left">
+                show
+                <!-- <input type="submit" data-enhanced="true" /> -->
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div data-role="footer" class="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          All rights reserved | Programming Training Time Tracker
+        </p>
+      </div>
+    </div>
+
+    <script src="./scripts/login.js"></script>
+    <script src="./scripts/user-form.js"></script>
+    <script src="./scripts/recordForm.js"></script>
+    <script src="./scripts/records.js"></script>
+    <!-- <script src="./scripts/userInfo.js"></script> -->
+  </body>
+</html>

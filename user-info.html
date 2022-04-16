@@ -1,0 +1,76 @@
+<!--
+  Assignment: week-5-lab
+  Author: Arefa Nila
+  Date: 04-10-2022
+  Purpose: This is the linked user information input page of Training Time Tracker application.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Tracker</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <div data-role="page" id="page-user-info">
+      <div data-role="header">
+        <a rel="external" class="ui-link ui-btn-left ui-btn ui-icon-bars ui-btn-icon-left ui-btn-inline ui-shadow ui-corner-all" href="menu.html">Menu</a>
+        <h1>Time Tracker</h1>
+      </div>
+      <div data-role="navbar">
+        <ul>
+          <li>
+            <a href="menu.html" rel="external" class="ui-btn">Home</a>
+          </li>
+          <li>
+            <a href="user-info.html" rel="external" class="ui-btn-active ui-state-persist">User Info</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="container">
+        <div data-role="main" class="ui-content">
+          <div class="wrape">
+            <form id="form-user-info" name="form-user-info">
+              <div class="ui-field-contain">
+                <label for="first-name">First Name:</label>
+                <input required type="text" name="firstName" id="first-name" placeholder="First Name" value="" />
+              </div>
+              <div class="ui-field-contain">
+                <label for="last-name">Last Name:</label>
+                <input required type="text" name="lastName" id="last-name" placeholder="Last Name" value="" />
+              </div>
+              <div class="ui-field-contain">
+                <label>Edit Password:</label>
+                <input required name="password" type="password" placeholder="New Password" data-clear-btn="false" id="password-1" value="" autocomplete="off" />
+              </div>
+              <div class="ui-field-contain">
+                <label for="goals">Goals:</label>
+                <input required type="text" name="goals" id="goals" placeholder="Enter your goals if any :)" value="" />
+              </div>
+              <div id="user-submit" class="ui-btn ui-input-btn ui-corner-all ui-shadow ui-btn-inline ui-icon-check ui-btn-icon-left">Update</div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div data-role="footer" class="footer">
+        <p>
+          Copyright ©
+          <script>
+            document.write(new Date().getFullYear());
+          </script>
+          All rights reserved | Programming Training Time Tracker
+        </p>
+      </div>
+    </div>
+
+    <script src="./scripts/userInfo.js"></script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+/*
+  Name: Arefa Nila
+  Date: 04-10-2022
+  Assignment: Week 5 Lab
+*/
+
+h2 {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 100;
+}
+
+/*--
+  Assignment: week-4-lab
+  Name: Arefa Nila
+  Date: 04-03-2022
+*/
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+.container {
+  background-image: url(../logo.gif), url(../bg.gif);
+  background-position: right bottom, center;
+  background-repeat: no-repeat, repeat;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 100px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 70%;
+  height: auto;
+  background-color: #ffffff;
+  margin-top: 30px;
+}
+
+.Home_container {
+  background-image: url(../logo.gif), url(../Home_container.gif);
+  background-position: right bottom, center;
+  background-repeat: no-repeat, repeat;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 100px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: auto;
+  height: auto;
+  object-fit: cover;
+  background-color: #ffffff;
+  margin-top: 30px;
+}
+
+.wrape {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
